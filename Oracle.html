@@ -36,66 +36,16 @@
 	<!-- MAIN CONTENT -->
 	<div id="main_content_wrap" class="outer">
 		<section id="main_content" class="inner">
-			<p>A selection of sample code, with brief descriptions of the
-				related projects.</p>
-
+			<p>
+			A selection of sample code, with brief descriptions of the related projects.
+			</p>
+			
 			<h3>Oracle</h3>
-
-			There was a bunch of ETL-Jobs (or ELT, if you like), plus some
-			application/business-logic as triggers and Pl/Sql. <br> <br>The
-			jobs were done in Oracle entirely, eventually feeding a master data
-			management system, also on Oracle. <br> <br>Initial
-			extraction was done with Oracle Loader, loading <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/FitchLoader.dat">comma
-				separated </a> and <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/S%26PLoader.dat">fixed
-				length </a> formats to staging tables, non-recoverable and non-logged
-			in append mode. Wherever possible type conversion was left to the
-			loader too, as in the examples shown. <br> <br>Where not,
-			type conversion was handled in <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_price_transf_eval.sql">
-				transformation views</a>, usually simultaneously with the application of
-			business rules. The latter could be rather elaborate functions like
-			the peculiar amend date decoding in <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/PRO%23.pkb">
-				this package</a> (check_amenddt, test_amend_date), where also the
-			default insert-from-view error handling is shown (load_data). <br>
-			<br>In one case I was happy to find an occasion to apply a <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/PipelinedFunctionConvertRawWssRecord.sql">
-				parallel pipelined function </a> (plus the related <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/TransformRawRecord%23.pkb">
-				implementing package </a> for the decoding proper) to extract raw values
-			from a colon-separated-key-value-pairs format to feed a <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_transform_wss.sql">
-				subsequent transformation view </a> and <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/TransformAndLoad%23.pkb">
-				loading </a> to the final staging table. In this case the <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/WssLoader.dat">Oracle
-				loader file</a> is trivial. <br> <br>Business rule views also
-			could come in their own right, like in <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_cp_rating_eval.sql">
-				this example</a> , where the analytical functions of Oracle handed
-			themselves nicely to implemented a given
-			set of requirements, in this case for Standard and Poor's ratings. <br>
-			<br>Rating processing for the big 3 providers (Standard and
-			Poor's, Moody's, Fitch) proved to be uniform enough to apply the same
-			strategy to all of them and implementing <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/RTG_UTIL%23.pkb">"object
-				orientation like code reuse" </a> by constructing sql at runtime. It was
-			a trade of maintainability and DRYness against ease of implementation
-			and readability. See for example PROCEDURE SYNC_mdm, which synchronizes the
-			master data management with the current load. Access to the
-			master data was the bottleneck, therefore caching
-			(g_mdm_classnames, FUNCTION get_class_name) and one time copies of
-			relevant master data (e.g. rating symbols, PROCEDURE collect_symbols) 
-			were employed and table statistics kept up to date (gather_table_stats).
-
+			
 			<h3>C#</h3>
 
 			<p>
-
-
-				<a href="https://github.com/curiosag/democode/"> </a> <a
+				<a
 					href="https://github.com/curiosag/AdScraperGwt/blob/master/src/es/usc/citius/common/parallel/Parallel.java">parallel
 					source</a>
 			</p>
