@@ -10,9 +10,125 @@
 	href="stylesheets/stylesheet.css">
 
 <title>Demo Code</title>
+
+<style type="text/css">
+ul#tabs {
+	list-style-type: none;
+	margin: 30px 0 0 0;
+	padding: 0 0 0.3em 0;
+}
+
+ul#tabs li {
+	display: inline;
+}
+
+ul#tabs li a {
+	color: #42454a;
+	background-color: #dedbde;
+	border: 1px solid #c9c3ba;
+	border-bottom: none;
+	padding: 0.3em;
+	text-decoration: none;
+}
+
+ul#tabs li a:hover {
+	background-color: #f1f0ee;
+}
+
+ul#tabs li a.selected {
+	color: #000;
+	background-color: #f1f0ee;
+	font-weight: bold;
+	padding: 0.7em 0.3em 0.38em 0.3em;
+}
+
+div.tabContent {
+	border: 1px solid #c9c3ba;
+	padding: 0.5em;
+	background-color: #f1f0ee;
+}
+
+div.tabContent.hide {
+	display: none;
+}
+</style>
+
+<script type="text/javascript">
+	//<![CDATA[
+
+	var tabLinks = new Array();
+	var contentDivs = new Array();
+
+	function init() {
+
+		// Grab the tab links and content divs from the page
+		var tabListItems = document.getElementById('tabs').childNodes;
+		for (var i = 0; i < tabListItems.length; i++) {
+			if (tabListItems[i].nodeName == "LI") {
+				var tabLink = getFirstChildWithTagName(tabListItems[i], 'A');
+				var id = getHash(tabLink.getAttribute('href'));
+				tabLinks[id] = tabLink;
+				contentDivs[id] = document.getElementById(id);
+			}
+		}
+
+		var i = 0;
+		for ( var id in tabLinks) {
+			tabLinks[id].onclick = showTab;
+			tabLinks[id].onfocus = function() {
+				this.blur()
+			};
+			if (i == 0)
+				tabLinks[id].className = 'selected';
+			i++;
+		}
+
+		// Hide all content divs except the first
+		var i = 0;
+		for ( var id in contentDivs) {
+			if (i != 0)
+				contentDivs[id].className = 'tabContent hide';
+			i++;
+		}
+	}
+
+	function showTab() {
+		var selectedId = getHash(this.getAttribute('href'));
+
+		// Highlight the selected tab, and dim all others.
+		// Also show the selected content div, and hide all others.
+		for ( var id in contentDivs) {
+			if (id == selectedId) {
+				tabLinks[id].className = 'selected';
+				contentDivs[id].className = 'tabContent';
+			} else {
+				tabLinks[id].className = '';
+				contentDivs[id].className = 'tabContent hide';
+			}
+		}
+
+		// Stop the browser following the link
+		return false;
+	}
+
+	function getFirstChildWithTagName(element, tagName) {
+		for (var i = 0; i < element.childNodes.length; i++) {
+			if (element.childNodes[i].nodeName == tagName)
+				return element.childNodes[i];
+		}
+	}
+
+	function getHash(url) {
+		var hashPos = url.lastIndexOf('#');
+		return url.substring(hashPos + 1);
+	}
+
+	//]]>
+</script>
+
 </head>
 
-<body>
+<body onload="init()">
 
 	<!-- HEADER -->
 	<div id="header_wrap" class="outer">
@@ -36,71 +152,11 @@
 	<!-- MAIN CONTENT -->
 	<div id="main_content_wrap" class="outer">
 		<section id="main_content" class="inner">
+
 			<p>A selection of sample code, with brief descriptions of the
 				related projects.</p>
 
-			<h3>Oracle</h3>
-
-			There was a bunch of ETL-Jobs (or ELT, if you like), plus some
-			application/business-logic as triggers and Pl/Sql. <br> <br>The
-			jobs were done in Oracle entirely, eventually feeding a master data
-			management system, also on Oracle. <br> <br>Initial
-			extraction was done with Oracle Loader, loading <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/FitchLoader.dat">comma
-				separated </a> and <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/S%26PLoader.dat">fixed
-				length </a> formats to staging tables, non-recoverable and non-logged
-			in append mode. Wherever possible type conversion was left to the
-			loader too, as in the examples shown. <br> <br>Where not,
-			type conversion was handled in <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_price_transf_eval.sql">
-				transformation views</a>, usually simultaneously with the application of
-			business rules. The latter could be rather elaborate functions like
-			the peculiar amend date decoding in <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/PRO%23.pkb">
-				this package</a> (check_amenddt, test_amend_date), where also the
-			default insert-from-view error handling is shown (load_data). <br>
-			<br>In one case I was happy to find an occasion to apply a <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/PipelinedFunctionConvertRawWssRecord.sql">
-				parallel pipelined function </a> (plus the related <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/TransformRawRecord%23.pkb">
-				implementing package </a> for the decoding proper) to extract raw values
-			from a colon-separated-key-value-pairs format to feed a <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_transform_wss.sql">
-				subsequent transformation view </a> and <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/TransformAndLoad%23.pkb">
-				loading </a> to the final staging table. In this case the <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/WssLoader.dat">Oracle
-				loader file</a> is trivial. <br> <br>Business rule views also
-			could come in their own right, like in <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_cp_rating_eval.sql">
-				this example</a> , where the analytical functions of Oracle handed
-			themselves nicely to implemented a given
-			set of requirements, in this case for Standard and Poor's ratings. <br>
-			<br>Rating processing for the big 3 providers (Standard and
-			Poor's, Moody's, Fitch) proved to be uniform enough to apply the same
-			strategy to all of them and implementing <a
-				href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/RTG_UTIL%23.pkb">"object
-				orientation like code reuse" </a> by constructing sql at runtime. It was
-			a trade of maintainability and DRYness against ease of implementation
-			and readability. See for example PROCEDURE SYNC_mdm, which synchronizes the
-			master data management with the current load. Access to the
-			master data was the bottleneck, therefore caching
-			(g_mdm_classnames, FUNCTION get_class_name) and one time copies of
-			relevant master data (e.g. rating symbols, PROCEDURE collect_symbols) 
-			were employed and table statistics kept up to date (gather_table_stats).
-
-			<h3>C#</h3>
-
-			<p>
-
-
-				<a href="https://github.com/curiosag/democode/"> </a> <a
-					href="https://github.com/curiosag/AdScraperGwt/blob/master/src/es/usc/citius/common/parallel/Parallel.java">parallel
-					source</a>
-			</p>
-
-			<p>
+				<p>
 				This automatic page generator is the easiest way to create beautiful
 				pages for all of your projects. Author your page content here <a
 					href="https://guides.github.com/features/mastering-markdown/">using
@@ -111,68 +167,85 @@
 				Windows, simply sync your repository and you'll see the new branch.
 			</p>
 
-			<h3>
-				<a id="designer-templates" class="anchor" href="#designer-templates"
-					aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer
-				Templates
-			</h3>
+	
+			<ul id="tabs">
+				<li><a href="#Oracle">Oracle</a></li>
+				<li><a href="#DotNet">C#</a></li>
+				<li><a href="#Delphi">Delphi</a></li>
+			</ul>
 
-			<p>We've crafted some handsome templates for you to use. Go ahead
-				and click 'Continue to layouts' to browse through them. You can
-				easily go back to edit your page before publishing. After publishing
-				your page, you can revisit the page generator and switch to another
-				theme. Your Page content will be preserved.</p>
+			<div class="tabContent" id="Oracle">
+				<h2>Oracle code</h2>
+				<div>
+					There was a bunch of ETL-Jobs (or ELT, if you like), plus some
+					application/business-logic as triggers and Pl/Sql. <br> <br>The
+					jobs were done in Oracle entirely, eventually feeding a master data
+					management system, also on Oracle. <br> <br>Initial
+					extraction was done with Oracle Loader, loading <a
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/FitchLoader.dat">comma
+						separated </a> and <a
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/S%26PLoader.dat">fixed
+						length </a> formats to staging tables, non-recoverable and non-logged
+					in append mode. Wherever possible type conversion was left to the
+					loader too, as in the examples shown. <br> <br>Where not,
+					type conversion was handled in <a
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_price_transf_eval.sql">
+						transformation views</a>, usually simultaneously with the application
+					of business rules. The latter could be rather elaborate functions
+					like the peculiar amend date decoding in <a
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/PRO%23.pkb">
+						this package</a> (check_amenddt, test_amend_date), where also the
+					default insert-from-view error handling is shown (load_data). <br>
+					<br>In one case I was happy to find an occasion to apply a <a
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/PipelinedFunctionConvertRawWssRecord.sql">
+						parallel pipelined function </a> (plus the related <a
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/TransformRawRecord%23.pkb">
+						implementing package </a> for the decoding proper) to extract raw
+					values from a colon-separated-key-value-pairs format to feed a <a
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_transform_wss.sql">
+						subsequent transformation view </a> and <a
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/TransformAndLoad%23.pkb">
+						loading </a> to the final staging table. In this case the <a
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/WssLoader.dat">Oracle
+						loader file</a> is trivial. <br> <br>Business rule views
+					also could come in their own right, like in <a
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_cp_rating_eval.sql">
+						this example</a> , where the analytical functions of Oracle handed
+					themselves nicely to implemented a given set of requirements, in
+					this case for Standard and Poor's ratings. <br> <br>Rating
+					processing for the big 3 providers (Standard and Poor's, Moody's,
+					Fitch) proved to be uniform enough to apply the same strategy to
+					all of them and implementing <a href="https://github.com/curiosag/"DotNet/BaseDataRequest.cs"democode/blob/master/Oracle/ETL/PlSql/RTG_UTIL%23.pkb">"object
+						orientation like code reuse" </a> by constructing sql at runtime. It
+					was a trade of maintainability and DRYness against ease of
+					implementation and readability. See for example PROCEDURE SYNC_mdm,
+					which synchronizes the master data management with the current
+					load. Access to the master data was the bottleneck, therefore
+					caching (g_mdm_classnames, FUNCTION get_class_name) and one time
+					copies of relevant master data (e.g. rating symbols, PROCEDURE
+					collect_symbols) were employed and table statistics kept up to date
+					(gather_table_stats).
 
-			<h3>
-				<a id="creating-pages-manually" class="anchor"
-					href="#creating-pages-manually" aria-hidden="true"><span
-					class="octicon octicon-link"></span></a>Creating pages manually
-			</h3>
+				</div>
+			</div>
 
-			<p>
-				If you prefer to not use the automatic generator, push a branch
-				named
-				<code>gh-pages</code>
-				to your repository to create a page manually. In addition to
-				supporting regular HTML content, GitHub Pages support Jekyll, a
-				simple, blog aware static site generator. Jekyll makes it easy to
-				create site-wide headers and footers without having to copy them
-				across every page. It also offers intelligent blog support and other
-				advanced templating features.
-			</p>
+			<div class="tabContent" id="DotNet">
+				<h2>C#</h2>
+				<div>
+					<p>lala</p>
+				</div>
+			</div>
 
-			<h3>
-				<a id="authors-and-contributors" class="anchor"
-					href="#authors-and-contributors" aria-hidden="true"><span
-					class="octicon octicon-link"></span></a>Authors and Contributors
-			</h3>
+			<div class="tabContent" id="Delphi">
+				<h2>Delphi</h2>
+				<div>
+					<p>Delphi</p>
+				</div>
+			</div>
 
-			<p>
-				You can <a href="https://github.com/blog/821" class="user-mention">@mention</a>
-				a GitHub username to generate a link to their profile. The resulting
-				<code>&lt;a&gt;</code>
-				element will link to the contributor's GitHub Profile. For example:
-				In 2007, Chris Wanstrath (<a href="https://github.com/defunkt"
-					class="user-mention">@defunkt</a>), PJ Hyett (<a
-					href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>),
-				and Tom Preston-Werner (<a href="https://github.com/mojombo"
-					class="user-mention">@mojombo</a>) founded GitHub.
-			</p>
-
-			<h3>
-				<a id="support-or-contact" class="anchor" href="#support-or-contact"
-					aria-hidden="true"><span class="octicon octicon-link"></span></a>Support
-				or Contact
-			</h3>
-
-			<p>
-				Having trouble with Pages? Check out our <a
-					href="https://help.github.com/pages">documentation</a> or <a
-					href="https://github.com/contact">contact support</a> and we’ll
-				help you sort it out.
-			</p>
 		</section>
 	</div>
+
 
 	<!-- FOOTER  -->
 	<div id="footer_wrap" class="outer">
@@ -185,7 +258,6 @@
 			</p>
 		</footer>
 	</div>
-
 
 
 </body>
