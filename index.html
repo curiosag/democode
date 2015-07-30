@@ -95,8 +95,6 @@ div.tabContent.hide {
 	function showTab() {
 		var selectedId = getHash(this.getAttribute('href'));
 
-		// Highlight the selected tab, and dim all others.
-		// Also show the selected content div, and hide all others.
 		for ( var id in contentDivs) {
 			if (id == selectedId) {
 				tabLinks[id].className = 'selected';
@@ -119,8 +117,7 @@ div.tabContent.hide {
 	}
 
 	function getHash(url) {
-		var hashPos = url.lastIndexOf('#');
-		return url.substring(hashPos + 1);
+		return url.substring(url.lastIndexOf('#') + 1);
 	}
 
 	//]]>
@@ -155,19 +152,10 @@ div.tabContent.hide {
 
 			<p>A selection of sample code, with brief descriptions of the
 				related projects.</p>
+			<p>Please note that the code samples are for most parts heavily
+				abbreviated and altered due to non-disclosure obligations. Some
+				proof of concepts (PoC) are compilable, though.</p>
 
-				<p>
-				This automatic page generator is the easiest way to create beautiful
-				pages for all of your projects. Author your page content here <a
-					href="https://guides.github.com/features/mastering-markdown/">using
-					GitHub Flavored Markdown</a>, select a template crafted by a designer,
-				and publish. After your page is generated, you can check out the new
-				<code>gh-pages</code>
-				branch locally. If you're using GitHub for Mac or GitHub for
-				Windows, simply sync your repository and you'll see the new branch.
-			</p>
-
-	
 			<ul id="tabs">
 				<li><a href="#Oracle">Oracle</a></li>
 				<li><a href="#DotNet">C#</a></li>
@@ -175,13 +163,12 @@ div.tabContent.hide {
 			</ul>
 
 			<div class="tabContent" id="Oracle">
-				<h2>Oracle code</h2>
+				<h2>ELT</h2>
 				<div>
-					There was a bunch of ETL-Jobs (or ELT, if you like), plus some
-					application/business-logic as triggers and Pl/Sql. <br> <br>The
-					jobs were done in Oracle entirely, eventually feeding a master data
-					management system, also on Oracle. <br> <br>Initial
-					extraction was done with Oracle Loader, loading <a
+					application/business-logic as triggers and Pl/Sql. <br> <br>ETL-Jobs
+					(or ELT, if you like) jobs were done in Oracle entirely, eventually
+					feeding a master data management system, also on Oracle. <br>
+					<br>Initial extraction was done with Oracle Loader, loading <a
 						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/FitchLoader.dat">comma
 						separated </a> and <a
 						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/S%26PLoader.dat">fixed
@@ -216,30 +203,82 @@ div.tabContent.hide {
 					processing for the big 3 providers (Standard and Poor's, Moody's,
 					Fitch) proved to be uniform enough to apply the same strategy to
 					all of them and implementing <a href="https://github.com/curiosag/"DotNet/BaseDataRequest.cs"democode/blob/master/Oracle/ETL/PlSql/RTG_UTIL%23.pkb">"object
-						orientation like code reuse" </a> by constructing sql at runtime. It
-					was a trade of maintainability and DRYness against ease of
-					implementation and readability. See for example PROCEDURE SYNC_mdm,
-					which synchronizes the master data management with the current
-					load. Access to the master data was the bottleneck, therefore
-					caching (g_mdm_classnames, FUNCTION get_class_name) and one time
-					copies of relevant master data (e.g. rating symbols, PROCEDURE
+						orientation like code reuse" </a> by constructing sql at runtime
+					(uniform table names were no option). It was a trade of
+					maintainability and DRYness against ease of implementation and
+					readability. See for example PROCEDURE SYNC_mdm, which synchronizes
+					the master data management with the current load. Access to the
+					master data was the bottleneck, therefore caching
+					(g_mdm_classnames, FUNCTION get_class_name) and one time copies of
+					relevant master data (e.g. rating symbols, PROCEDURE
 					collect_symbols) were employed and table statistics kept up to date
 					(gather_table_stats).
 
 				</div>
+				<h2>Master data management synchronization</h2>
+				Master data management synchronization usually meant, spelling out
+				loads of business rules and mappings in PlSql, apply them record
+				based, field by field, to preloaded data and fiddle the results
+				through a complex PlSql-Api to the database. The sample is a tiny
+				fraction of asset synchronization, the central task of it all. <br>
+				<br>Since heavy use of objects was made on all levels,
+				occasionally object representations had to be undone and serialized
+				for a number of reasons. Aside custom ELT, data travelled via Xml
+				messaging, including creation and sending as well as message
+				consumption. The latter used DOM-access and XQuery.
+				<div></div>
 			</div>
 
 			<div class="tabContent" id="DotNet">
 				<h2>C#</h2>
 				<div>
-					<p>lala</p>
+					<p>A high level ftp class with specialized subclasses to
+						provide straight forward ftp functionality, implemented with .net
+						web requests, and emulated ftp functionality operating on the
+						filesystem. The latter was used to emulate the ftp delivery logic
+						of different data providers.</p>
+					<p>A study to leverage Linq to express data processing
+						sequences.</p>
+					<p>Proof of concept and pilot implementation - generate an
+						object model from Telekurs metadata definitions and show, that it
+						is possible to re-implement existing sql-queries on Telekurs valor
+						data feed using the object model and Linq. Core elements of the
+						initial product implementation, thought it was not appropriate to
+						mimic Sql there.</p>
 				</div>
 			</div>
 
 			<div class="tabContent" id="Delphi">
 				<h2>Delphi</h2>
 				<div>
-					<p>Delphi</p>
+					<p>Some elements of a client-server framework, splitting a
+						monolithic implementation into a client part that runs, monitors
+						and controls sequences of data processing and a server part,
+						responsible for execution and resource allocation for multiple
+						client requests. Requests came in form of data processing messages
+						(TDpMessageCommon), bundling sequences of commands and their
+						necessary execution parameters. The server translates
+						(uActionFactory_b, uActionFactoryFetchExternalData) them to
+						actions (uAction_b, uDbActions) which eventually get executed.
+						Client- Server and associated proxy-classes are not included here.</p>
+
+					<p>Elements of a generic storage and data retrieval framework,
+						that I implemented following an abstract design
+						(uDataAccessLayer_a) aimed at the provider structure level.
+						Everything down to the physical tables had to be spelled out. It
+						supports native simultaneous access to Oracle, Db2 (including
+						transparent DML array loading), DbIsam and non-natively anything
+						that BDE supported. Data writing is tree oriented and handles CRUD
+						operations transparently for using classes. It is metadata-driven,
+						metadata is a minimalistic pointer structure (uMd) giving rise to
+						some pointer juggling (uMdUtil). The abstract level was backed by
+						custom classes and eventually by a general table access layer
+						(uCustomTableAccess) with database specific implementations,
+						hiding the nasty details. For examples of nasty details see
+						uOraTableExt, uSQLFormat_DB2 and uDB2Writer. Database structures
+						get generated from metadata (e.g. uOraTableExt.CreateTable, after
+						being translated to Delphi FieldDefs) and can be altered
+						automatically on metadata changes.</p>
 				</div>
 			</div>
 
