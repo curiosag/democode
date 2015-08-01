@@ -96,15 +96,10 @@
 						this example</a> , where the analytical functions of Oracle handed
 					themselves nicely to implemented a given set of requirements, in
 					this case for Standard and Poor's ratings. <br> <br>Rating
-					processing for the big 3 providers (Standard and Poor's, Moody's,
-					Fitch) proved to be uniform enough to apply the same strategy to
-					all of them and implementing <a
-						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/RTG_UTIL%23.pkb">"object
-						orientation like code reuse" </a> by constructing sql at runtime
-					(uniform table names were no option). It was a trade of
-					maintainability and DRYness against ease of implementation and
-					readability. See for example PROCEDURE SYNC_mdm, which synchronizes
-					the master data management with the current load. Access to the
+					processing for different providers proved to be uniform enough to apply the same strategy to
+					all of them <a
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/RTG_UTIL%23.pkb">by constructing sql at runtime </a> 
+					(uniform table names were no option). Access to the
 					master data was the bottleneck, therefore caching
 					(g_mdm_classnames, FUNCTION get_class_name) and one time copies of
 					relevant master data (e.g. rating symbols, PROCEDURE
