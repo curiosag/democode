@@ -4,12 +4,12 @@
 <head>
 <meta charset='utf-8'>
 <meta http-equiv="X-UA-Compatible" content="chrome=1">
-<meta name="description" content="Demo Code : ">
+<meta name="description" content="Code : ">
 
 <link rel="stylesheet" type="text/css" media="screen"
 	href="stylesheets/stylesheet.css">
 
-<title>Demo Code</title>
+<title>Code</title>
 <script src="jquery.js" type="text/javascript"></script>
 <script src="demoCode.js" type="text/javascript"></script>
 
@@ -29,7 +29,7 @@
 			<a id="forkme_banner" href="https://github.com/curiosag/democode">View
 				on GitHub</a>
 
-			<h1 id="project_title">Demo Code</h1>
+			<h1 id="project_title">Code</h1>
 			<h2 id="project_tagline"></h2>
 
 			<section id="downloads">
@@ -59,7 +59,7 @@
 			</ul>
 
 			<div class="tabContent" id="Oracle">
-				<h2>ELT</h2>
+				<h3>ELT</h3>
 				<div>
 					application/business-logic as triggers and Pl/Sql. <br> <br>ETL-Jobs
 					(or ELT, if you like) jobs were done in Oracle entirely, eventually
@@ -94,20 +94,19 @@
 					also could come in their own right, like in <a
 						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_cp_rating_eval.sql">
 						this example</a> , where the analytical functions of Oracle handed
-					themselves nicely to implemented a given set of requirements, in
-					this case for Standard and Poor's ratings. <br> <br>Rating
-					processing for different providers proved to be uniform enough to apply the same strategy to
-					all of them <a
-						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/RTG_UTIL%23.pkb">by constructing sql at runtime </a> 
-					(uniform table names were no option). Access to the
-					master data was the bottleneck, therefore caching
+					themselves nicely to implemented a given set of requirements. <br>
+					<br>Rating processing for different providers proved to be
+					uniform enough to apply the same strategy to all of them <a
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/RTG_UTIL%23.pkb">by
+						constructing sql at runtime </a> (uniform table names were no option).
+					Access to the master data was the bottleneck, therefore caching
 					(g_mdm_classnames, FUNCTION get_class_name) and one time copies of
 					relevant master data (e.g. rating symbols, PROCEDURE
 					collect_symbols) were employed and table statistics kept up to date
 					(gather_table_stats).
 
 				</div>
-				<h2>Master data management synchronization</h2>
+				<h3>Master data management synchronization</h3>
 				Master data management synchronization usually meant, spelling out
 				loads of business rules and mappings in PlSql, apply them record
 				based, field by field, to pre-loaded data and fiddle the results
@@ -119,16 +118,16 @@
 				representations had to be undone and <a
 					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/deserialize_objects%23.pkb">serialized</a>
 				for a number of reasons. Aside custom ELT, data traveled via Xml
-				messaging, including  <a
-					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/XmlGen%23.pkb">creation and sending</a>
-				as well as consumption. The latter used  <a
-					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/XmlDomManipulation%23.pkb">DOM-access</a> and <a
+				messaging, including <a
+					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/XmlGen%23.pkb">creation
+					and sending</a> as well as consumption. The latter used <a
+					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/XmlDomManipulation%23.pkb">DOM-access</a>
+				and <a
 					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/XmlXQuery%23.pkb">XQuery</a>.
 				<div></div>
 			</div>
 
 			<div class="tabContent" id="DotNet">
-				<h2>C#</h2>
 				<div>
 					<p>
 						A study to exploit Linq syntax to express <a
@@ -154,12 +153,12 @@
 					<p>
 						Proof of concept and pilot application - generate an <a
 							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/TkMeta/FromXsd/Doc.cs">object
-							model</a> from meta-data definitions of a certain data provider and show, that it is
-						possible to <a
+							model</a> from meta-data definitions of a certain data provider and
+						show, that it is possible to <a
 							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/TkMeta/SampleQuery_Baskets.cs">re-implement
-							existing sql-queries</a> on that data-feed using the
-						object model and Linq. The final model provided by another party
-						was closely related. On that I based <a
+							existing sql-queries</a> on that data-feed using the object model and
+						Linq. The final model provided by another party was closely
+						related. On that I based <a
 							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/Production/Extraction.cs">core
 							elements</a> of the initial implementation of <a
 							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/Production/BondMonNormalizer.cs">
@@ -169,7 +168,6 @@
 			</div>
 
 			<div class="tabContent" id="Delphi">
-				<h2>Delphi</h2>
 				<div>
 					<p>
 						Elements of a client-server framework, splitting an existing
