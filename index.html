@@ -130,18 +130,15 @@
 			<div class="tabContent" id="DotNet">
 				<div>
 					<p>
-						A study to exploit Linq syntax to express <a
+						A study to use Linq syntax to express <a
 							href="https://github.com/curiosag/MicroWorkflow/tree/master/DataProcessingByLinq/Program.cs">data
-							processing sequences</a> that can be suspended, persisted, resumed
-						and recovered. It is possible, but the syntax offered isn't
-						exactly what one would like, and going to F# computation sequences
-						wasn't an option, though many aspects of the tasks at hand asked
-						for it.
+							processing sequences</a> with the goal to create non-graphical workflow definitions that can be suspended, persisted and resumed.
+							 It is possible, but very limited. F# computation sequences could be used the same way btw, being more expressive.
 					</p>
 					<p>
 						A byproduct that eventually became production code was a simple
 						high level <a
-							href="https://github.com/curiosag/democode/blob/master/DotNet/DataProcessingByLinq/Ftp/Ftp.cs">ftp
+							href="https://github.com/curiosag/MicroWorkflow/blob/master/DataProcessingByLinq/Ftp/Ftp.cs">ftp
 							class</a> with specialized subclasses to provide straight forward ftp
 						functionality, implemented with .net web requests, and <a
 							href="https://github.com/curiosag/democode/blob/master/DotNet/DataProcessingByLinq/Ftp/FileBasedFtpEmulator.cs">emulated
