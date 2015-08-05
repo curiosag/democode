@@ -112,18 +112,16 @@
 
 				</div>
 				<h3>Master data management synchronization</h3>
-				Master data management synchronization usually meant, spelling out
-				loads of business rules and mappings in PlSql, apply them record
-				based, field by field, to pre-loaded data and fiddle the results
-				through a complex Pl/Sql-api to the database. The sample is a tiny
-				fraction of <a
+				Master data management synchronization usually meant to apply
+				business rules and mappings in Pl/Sql, feed the results through a
+				complex Pl/Sql-api to the database. The sample is a tiny fraction of
+				<a
 					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/LOAD_INSTRUMENTS%23.pkb">asset
 					synchronization</a>, the central task of it all. <br> <br>Since
 				heavy use of objects was made on all levels, occasionally object
-				representations had to be undone and <a
-					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/deserialize_objects%23.pkb">serialized</a>
-				for a number of reasons. Aside custom ELT, data traveled via Xml
-				messaging, including <a
+				representations had to be <a
+					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/deserialize_objects%23.pkb">serialized</a>.
+				Aside custom ELT, data traveled via Xml messaging, including <a
 					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/XmlGen%23.pkb">creation
 					and sending</a> as well as consumption. The latter used <a
 					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/XmlDomManipulation%23.pkb">DOM-access</a>
