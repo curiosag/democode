@@ -36,7 +36,7 @@
 		<section id="main_content" class="inner">
 
 			A selection of projects with different application domains,
-			technologies and employers/customers.
+			technologies and employers/customers. Some of them also come up in a <a href="./index.html">related collection of code samples</a>.
 
 			<h3>Financial Datafeed Processing</h3>
 			A series of individual projects spread out over a couple of years,
@@ -72,24 +72,6 @@
 				: consulting, analysis, design, technical project management, ,
 				integration, test, 3rd level support, maintenance
 			</p>
-			<h3>Rating Data Processing</h3>
-			Framework for processing of rating data, initial project for Standard
-			& Poor's ratings with follow up projects for Moody's and Fitch.
-			Synchronization of master data with pre-loaded, sanitized ratings.
-			Individual loader files, normalization and selection using a common
-			framework, then uniform processing, rendering the follow-up projects
-			rather economical. Initially customer projects, the implementation
-			became part of a standard product.
-			<p>
-				<code>technology</code>
-				: Oracle 10g, Oracle loader, Sql, Pl/Sql, proprietary scripting
-				language
-				</code>
-			</p>
-			<p>
-				<code>roles</code>
-				: design, implementation, 3rd level support, maintenance
-			</p>
 			<h3>Generic Data Persistence and Manipulation Framework</h3>
 			</p>
 			</p>
@@ -114,13 +96,13 @@
 				: detail design, database design, implementation, 3rd level support,
 				maintenance
 			</p>
-			<h3>Client Server Framework for Remote Data Processing</h3>
+			<h3>Client-Server Framework for Remote Data Processing</h3>
 			<p>Splitting of an existing monolithic data processing platform
 				(that contained the previous project btw.) into a client part that
 				defines, initiates and monitors sequences of data processing either
 				by a monitoring console or by a programming interface and a server
 				part, responsible for execution and resource allocation for multiple
-				client requests. The server part could optionally run in-process,
+				client requests. The server part can optionally run in-process,
 				maintaining the previous monolithic mode. The implementation was
 				built upon a pre-existing abstraction layer of low level middleware.
 			</p>
@@ -138,13 +120,14 @@
 			</p>
 			<h3>.Net Re-implementation of core data processing functionality</h3>
 			Re-implementation and extension of processing elements for financial
-			data providers in a data processing framework with client-server
+			data providers in a .Net data processing framework with client-server
 			architecture. Encompassed functionality for request- and
 			delivery-handling including request pooling <small><sup><a
-					href="#ref1">1</a></sup></small>, sanitation, extraction, normalization.
-			Interface definition and mock-implementation for a related staging
-			area. Implementation of a provider server emulation framework for
-			automated testing.<br> <br>Elements of a standard product.
+					href="#ref1">1</a></sup></small>, sanitation, extraction and normalization.
+			Interface definition and preliminary implementation for a related
+			staging area. Implementation of a provider server emulation framework
+			for automated testing.<br> <br>Elements of a standard
+			product.
 			<p>
 				<code>technology</code>
 				: C#, RavenDb
@@ -153,44 +136,25 @@
 				<code>roles</code>
 				: technical consultant, grass-root activist, implementation, test
 			</p>
-			<h3>Xml storage prototype and evaluation</h3>
-			Implementation of different Xml storage models (Binary Xml, XMLType,
-			CLOB) with Oracle, combined with parallelized Xslt processing and
-			storage. Comparison for high volume data with an existing relational
-			single thread implementation, benchmarks, derivation of implications
-			for possible implementations.
+			<h3>Rating Data Processing</h3>
+			Framework for processing of rating data, initial project for Standard
+			& Poor's ratings with follow up projects for Moody's and Fitch.
+			Synchronization of master data with pre-loaded, sanitized ratings.
+			Individual loader files, normalization and selection using a common
+			framework, then uniform processing, rendering the follow-up projects
+			rather economical. Initially customer projects, the implementation
+			became part of a standard product.
 			<p>
 				<code>technology</code>
-				: C#, Oracle 10g, Oracle XML Db
+				: Oracle 10g, Oracle loader, Sql, Pl/Sql, proprietary scripting
+				language
+				</code>
 			</p>
 			<p>
 				<code>roles</code>
-				: analysis, implementation, evaluation
+				: design, implementation, 3rd level support, maintenance
 			</p>
-			<h3>Pl/Sql rule compiler</h3>
-			Extension of an existing rule engine, that worked as an interpreter
-			by code generation functionality, rendering it to a rule compiler.
-			<p>
-				<code>technology</code>
-				: Oracle 10g, Pl/Sql
-			</p>
-			<p>
-				<code>roles</code>
-				: analysis, implementation
-			</p>
-			<h3>Model based data extraction from Telekurs data</h3>
-			Proof of concept for model generation from Telekurs metadata sources
-			and data extractions from the object model, covering existing
-			sql-queries on telekurs data. The final model chosen for the product
-			was close to the prototype.
-			<p>
-				<code>technology</code>
-				: C#
-			</p>
-			<p>
-				<code>roles</code>
-				: analysis, implementation
-			</p>
+
 			<h3>Elements of a Master Data Management System</h3>
 			Generic representation and processing of complex decision rules,
 			implementation of table- and message-oriented data in- and outflow
@@ -237,21 +201,56 @@
 				<code>roles</code>
 				: consultant, QA
 			</p>
+
+			<h3>Xml storage prototype and evaluation</h3>
+			Implementation of different Xml storage models (Binary Xml, XMLType,
+			CLOB) with Oracle, combined with parallelized Xslt processing and
+			storage. Comparison for high volume data with an existing relational
+			single thread implementation, benchmarks, derivation of implications
+			for possible implementations.
+			<p>
+				<code>technology</code>
+				: C#, Oracle 10g, Oracle XML Db
+			</p>
+			<p>
+				<code>roles</code>
+				: analysis, implementation, evaluation
+			</p>
+			<h3>Pl/Sql rule compiler</h3>
+			Extension of an existing rule engine, that worked as an interpreter
+			by code generation functionality, rendering it to a rule compiler.
+			<p>
+				<code>technology</code>
+				: Oracle 10g, Pl/Sql
+			</p>
+			<p>
+				<code>roles</code>
+				: analysis, implementation
+			</p>
+			<h3>Model based data extraction from Telekurs data</h3>
+			Proof of concept for model generation from Telekurs metadata sources
+			and data extractions from the object model, covering existing
+			sql-queries on telekurs data. The final model chosen for the product
+			was close to the prototype.
+			<p>
+				<code>technology</code>
+				: C#
+			</p>
+			<p>
+				<code>roles</code>
+				: analysis, implementation
+			</p>
+
 			<p>
 				<br> <br> <hr><a name="ref1"></a><small>1 Request
 					pooling was an intersting feature to minimize the cost of requested
-					data. Instruments, e.g. a number of 
-					ISINs, that were the same in different request, were removed
-					from them and processed separately in another one. The resulting data
-					 data was merged with the resulting data of the residual original
-					requests. This strategy only works for some payment models, though. For
-					others the opposite is necessary: squeeze as many requests as
-					possible into one.</small>
+					data. Instruments, e.g. a number of ISINs, that were the same in
+					different request, were removed from them and processed separately
+					in another one. The resulting data data was merged with the
+					resulting data of the residual original requests. This strategy
+					only works for some payment models, though. For others the opposite
+					is necessary: squeeze as many requests as possible into one.</small>
 			</p>
-
-
-
-
 		</section>
 	</div>
 
