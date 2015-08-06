@@ -46,10 +46,12 @@
 	<div id="main_content_wrap" class="outer">
 		<section id="main_content" class="inner">
 
-			<p>A selection of sample code, from production code as well as
-				proof of concepts and studies, with brief descriptions of the
-				related projects. Some of them also appear in the <a href="./projects.html"> list of projects</a>.
-				</p>
+			<p>
+				A selection of sample code, from production code as well as proof of
+				concepts and studies, with brief descriptions of the related
+				projects. Some of them also appear in the <a href="./projects.html">
+					list of projects</a>.
+			</p>
 
 			<p>Please note, that the code samples are for most parts quite
 				abbreviated and altered to protect the rights of the employer and/or
@@ -65,8 +67,8 @@
 			<div class="tabContent" id="Oracle">
 				<h3>ELT</h3>
 				<div>
-					application/business-logic as triggers and Pl/Sql. <br> <br>ETL-Jobs
-					(or ELT, if you like) jobs were done in Oracle entirely, eventually
+					application/business-logic as triggers and Pl/Sql. <br> <br>ELT-Jobs were sort of
+					 everything-within-oracle version of ETL, eventually
 					feeding a master data management system, also on Oracle. <br>
 					<br>Initial extraction was done with Oracle Loader, loading <a
 						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/RatingLoaderA.dat">comma
@@ -99,7 +101,7 @@
 						loader file</a> is trivial. <br> <br>Business rule views
 					also could come in their own right, like in <a
 						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_cp_rating_eval.sql">
-						this example</a> , where the analytical functions of Oracle handed
+						this example</a> from rating processing, where the analytical functions of Oracle handed
 					themselves nicely to implemented a given set of requirements. <br>
 					<br>Rating processing for different providers proved to be
 					uniform enough to apply the same strategy to all of them <a
@@ -113,10 +115,11 @@
 
 				</div>
 				<h3>Master data management synchronization</h3>
-				Master data management synchronization usually meant, to apply sanity checks,
-				business rules and mappings in Pl/Sql to incoming data and feed the results through a
-				Pl/Sql-api to the da"Delphi/DataAccessLayer/uMd.pas"tabase while considering defined mutation rules. The sample is a tiny fraction of
-				<a
+				Master data management synchronization usually meant, to apply
+				sanity checks, business rules and mappings in Pl/Sql to incoming
+				data and feed the results through a Pl/Sql-api to the
+				database while considering defined
+				mutation rules. The sample is a tiny fraction of <a
 					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/LOAD_INSTRUMENTS%23.pkb">asset
 					synchronization</a>, a rather central task. <br> <br>Since
 				heavy use of objects was made on all levels, occasionally object
@@ -163,7 +166,7 @@
 						Linq. The final model provided by another party was closely
 						related. On that I based <a
 							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/Extractions/Extraction.cs">core
-							elements</a> of the initial implementation of <a
+							 production code elements</a> of the initial implementation of <a
 							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/Extractions/BondMonNormalizer.cs">
 							extractions</a>, thought it was not appropriate to mimic Sql there.
 					</p>
@@ -173,12 +176,11 @@
 			<div class="tabContent" id="Delphi">
 				<div>
 					<p>
-						Elements of a client-server framework, splitting an existing
-						monolithic implementation into a client part that runs, monitors
-						and controls sequences of data processing and a server part,
-						responsible for execution and resource allocation for multiple
-						client requests. Requests came in form of data processing messages
-						(<a
+						Elements of a client-server data processing framework, with a
+						client part that defines, initiates and monitors sequences of data
+						processing and a server part, responsible for execution and
+						co-ordination of concurrent client requests. Requests came in form
+						of data processing messages (<a
 							href="https://github.com/curiosag/democode/blob/master/Delphi/ClientServerFramework/uDpMessageCommon.pas">TDpMessageCommon</a>),
 						bundling sequences of commands and their execution parameters. The
 						server translates (<a

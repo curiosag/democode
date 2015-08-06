@@ -36,30 +36,32 @@
 		<section id="main_content" class="inner">
 
 			A selection of projects with different application domains,
-			technologies and employers/customers. Some of them also come up in a <a href="./index.html">related collection of code samples</a>.
+			technologies and employers/customers. Some of them also come up in a
+			<a href="./index.html">related collection of code samples</a>.
 
 			<h3>Financial Datafeed Processing</h3>
 			A series of individual projects spread out over a couple of years,
 			implementing components for processing finacial datafeeds of
 			different providers. Implementations were usually internationally
 			outsourced.<br> <br>Analysis involved identification and
-			verification of sources for data, meta-data (defining the structure
-			of data) and descriptive data (providing meaningful names to
-			meta-data and codes, e.g. country codes), in-depth resolution of gaps
-			and ambiguities, and eventually model mapping from the provider model
-			to the internally used meta-data. Meta-data meant definitions for the
-			structure of data, descriptive data gave meaningful names to elements
-			of meta-data and codes, e.g. for countries or currencies. <br> <br>Each
-			component covered extraction and update of all of them, if supported
-			by the provider, provider specific data requesting- and delivery
-			logic, raw data parsing, evaluation, cleansing and eventually storage
-			to a repository, considering provider-defined data mutation rules. <br>
-			<br> Amongst the implementations were batch- and selection
-			oriented request, both file and api based, and file- and api-based
-			delivery channels, the latter coming in batch- and real-time
-			flavours.<br> <br>Providers covered were Bloomberg
-			Backoffice and Per Security, Reuters RMDS, RDB, Equities and Fixed
-			Income and Swift Iso15022. In a consulting role I dealt with
+			verification of sources for data, meta-data and descriptive data,
+			in-depth resolution of gaps and ambiguities, and eventually model
+			mapping from the provider model to the internally used meta-data.
+			Meta-data meant definitions for the structure of data, descriptive
+			data gave meaningful names to elements of meta-data and codes, e.g.
+			to country-codes. <br> <br>Each component covered
+			extraction and update for meta-data and descriptive data, if
+			supported by the provider, provider specific data requesting- and
+			delivery logic, raw data parsing, evaluation, cleansing and
+			eventually storage to a repository, considering provider-defined data
+			mutation rules. Raw data processing was meta-data driven.<br> <br>
+			There were implementations for bulk- and selection oriented feeds,
+			file and api based request protocols and delivery channels, the
+			latter coming in batch- and real-time flavours, and one sample of a
+			request format, that came in form of a sequence of queries close to
+			sql.<br> <br>Providers covered were Bloomberg Backoffice
+			and Per Security, Reuters RMDS, RDB, Equities and Fixed Income and
+			Swift Iso15022. In a consulting role I dealt with
 			Wertpapiermanagement, Ftid, Reuters Select and general XML-feed
 			processing. <br> <br>The components were integral part of a
 			standard product.
@@ -69,23 +71,24 @@
 			</p>
 			<p>
 				<code>roles</code>
-				: consulting, analysis, design, technical project management, ,
+				: consulting, analysis, design, technical project management,
 				integration, test, 3rd level support, maintenance
 			</p>
 			<h3>Generic Data Persistence and Manipulation Framework</h3>
 			</p>
 			</p>
-			Implementation of an abstract design: Meta-data driven framework for
-			loading and updating data. Data could be of tree form, covering flat
-			structures as its simplest case. Data sinks were relational databases
-			(Oracle, DB2 and DbIsam natively, Microsoft SqlServer, Sybase and
-			Postgres via generic Borland Database Engine) and XML output format.
-			For native acces the implementation supported automatic database
-			structure changes upon changed metadata, for DB2 and Oracle the the
-			DML-array interface was supported. <br> <br>A byproduct was
-			generic, database independent table creation, table and index
-			structure change, cursor-oriented table data manipulation and sql
-			query execution.<br> <br>Element of a standard product.
+			Implementation of given abstract classes: Meta-data driven framework
+			for loading and updating data. Single data items could be trees of
+			1:n-related records, covering flat structures as its simplest case.
+			Data sinks were relational databases (Oracle, DB2 and DbIsam
+			natively, Microsoft SqlServer, Sybase and Postgres via generic
+			Borland Database Engine) and XML output format. For native acces the
+			implementation supported automatic database structure changes upon
+			changed metadata, for DB2 and Oracle the the DML-array interface was
+			supported. <br> <br>A byproduct was generic, database
+			independent table creation, table and index structure change,
+			cursor-oriented table data manipulation and sql query execution.<br>
+			<br>Element of a standard product.
 			</p>
 			<p>
 				<code>technology</code>
@@ -100,12 +103,11 @@
 			<p>Splitting of an existing monolithic data processing platform
 				(that contained the previous project btw.) into a client part that
 				defines, initiates and monitors sequences of data processing either
-				by a monitoring console or by a programming interface and a server
-				part, responsible for execution and resource allocation for multiple
-				client requests. The server part can optionally run in-process,
-				maintaining the previous monolithic mode. The implementation was
-				built upon a pre-existing abstraction layer of low level middleware.
-			</p>
+				by a monitoring console or by an api and a server part, responsible
+				for execution and co-ordination of multiple simultaneous client
+				requests. The server part can optionally run in-process, maintaining
+				the previous monolithic mode. The implementation was built upon a
+				pre-existing abstraction layer upon middleware.</p>
 			<p>
 				<code>technology</code>
 				: Delphi
@@ -123,7 +125,7 @@
 			data providers in a .Net data processing framework with client-server
 			architecture. Encompassed functionality for request- and
 			delivery-handling including request pooling <small><sup><a
-					href="#ref1">1</a></sup></small>, sanitation, extraction and normalization.
+					href="#ref1">1</a></sup></small>, data extraction, sanitation and normalization.
 			Interface definition and preliminary implementation for a related
 			staging area. Implementation of a provider server emulation framework
 			for automated testing.<br> <br>Elements of a standard
@@ -137,13 +139,16 @@
 				: technical consultant, grass-root activist, implementation, test
 			</p>
 			<h3>Rating Data Processing</h3>
-			Framework for processing of rating data, initial project for Standard
-			& Poor's ratings with follow up projects for Moody's and Fitch.
-			Synchronization of master data with pre-loaded, sanitized ratings.
-			Individual loader files, normalization and selection using a common
-			framework, then uniform processing, rendering the follow-up projects
-			rather economical. Initially customer projects, the implementation
-			became part of a standard product.
+			Framework for processing of rating data. The initial project was for
+			Standard & Poor's ratings with follow up projects for Moody's and
+			Fitch. <br>
+			<br></>A common, provider independent chain of processing steps,
+			fitting in provider specific operations where needed, like Oracle
+			loader files or transformation views. Common synchronization of
+			master data with pre-loaded, sanitized ratings. The design rendered the
+			follow-up projects rather economical. <br>
+			<br>Initially customer projects, the implementation became part
+			of a standard product.
 			<p>
 				<code>technology</code>
 				: Oracle 10g, Oracle loader, Sql, Pl/Sql, proprietary scripting
@@ -242,14 +247,16 @@
 			</p>
 
 			<p>
-				<br> <br> <hr><a name="ref1"></a><small>1 Request
-					pooling was an intersting feature to minimize the cost of requested
-					data. Instruments, e.g. a number of ISINs, that were the same in
-					different request, were removed from them and processed separately
-					in another one. The resulting data data was merged with the
-					resulting data of the residual original requests. This strategy
-					only works for some payment models, though. For others the opposite
-					is necessary: squeeze as many requests as possible into one.</small>
+				<br> <br>
+			<hr>
+			<a name="ref1"></a><small>1 Request pooling was an intersting
+				feature to minimize the cost of requested data. Instruments, e.g. a
+				number of ISINs, that were the same in different request, were
+				removed from them and processed separately in another one. The
+				resulting data data was merged with the resulting data of the
+				residual original requests. This strategy only works for some
+				payment models, though. For others the opposite is necessary:
+				squeeze as many requests as possible into one.</small>
 			</p>
 		</section>
 	</div>
