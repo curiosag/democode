@@ -1,0 +1,37 @@
+OPTIONS (SKIP=1)
+UNRECOVERABLE
+LOAD DATA
+INFILE * 
+APPEND
+INTO TABLE l_sandp
+  ( 
+	LINE_NUMBER             				 RECNUM,
+	ACTION_INDICATOR	                                 POSITION(1-1),
+	ENTITY_ID_ISSUER	                                 POSITION(2-19),
+	ENTITY_PUBLISHED_NAME_ISSUER	                     POSITION(20-109),
+	ENTITY_SECTOR	                                    POSITION(110-119),
+	ENTITY_SUB_SECTOR	                                 POSITION(120-129),
+	ENTITY_ROLE	                                       POSITION(130-135),
+	COUNTRY_CODE_ISSUER	                              POSITION(136-138),
+
+... quite some more fields
+	
+	INST_LT_OUTLOOK_DATE	                              POSITION(571-588) "to_timestamp(trim(:INST_LT_OUTLOOK_DATE), 'yyyymmdd hh24:mi:ss')",
+	INST_ST_OUTLOOK	                                 POSITION(589-603),
+	INST_ST_OUTLOOK_DATE	                              POSITION(604-621) "to_timestamp(trim(:INST_ST_OUTLOOK_DATE), 'yyyymmdd hh24:mi:ss')",
+	INST_LT_RATING	                                    POSITION(622-631),
+	INST_LT_RATING_DATE	                              POSITION(632-649) "to_timestamp(trim(:INST_LT_RATING_DATE), 'yyyymmdd hh24:mi:ss')",
+	INST_ST_RATING	                                    POSITION(650-659),
+	INST_ST_RATING_DATE	                              POSITION(660-677) "to_timestamp(trim(:INST_ST_RATING_DATE	), 'yyyymmdd hh24:mi:ss')",
+	INST_PRIOR_RATING	                                 POSITION(678-707),
+	INST_PRIOR_LT_CREDITWATCH	                        POSITION(708-722),
+
+... quite some more fields
+
+	CINS	                                             POSITION(800-811),
+	ISIN	                                             POSITION(812-823),
+	UNSOLICITED_RATING_FLAG	                           POSITION(824-824),
+	REGULATORY_QUALIFIER	                              POSITION(825-856),
+	ENDORSMENT_INDICATOR	                              POSITION(857-888),
+	RESERVED	                                          POSITION(889-1400) 
+)                                                

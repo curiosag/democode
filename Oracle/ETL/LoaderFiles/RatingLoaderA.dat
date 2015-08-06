@@ -1,0 +1,34 @@
+UNRECOVERABLE
+LOAD DATA
+INFILE * 
+APPEND
+INTO TABLE l_
+FIELDS TERMINATED BY ',' ENCLOSED BY '"'
+(
+line_number										RECNUM,
+security_identifier_typecode                    "to_number(:security_identifier_typecode, '99')",
+issue_id_number                           "to_number(:issue_id_number, '999999999999')",
+issuer_name                                     ,
+
+
+... quite some more fields
+
+
+issue_record_change_code                        ,
+issue_record_change_code_dt                     "to_timestamp(:issue_record_change_code_dt, 'dd-mon-yyyy hh24:mi:ss', 'NLS_DATE_LANGUAGE = ENGLISH')",
+time_zone_code                                  "to_number(:time_zone_code, '9')",
+issue_amount                                    "to_number(:issue_amount, '999999999999999999999999999999')",
+issue_debt_level_code                           ,
+issue_description                               ,
+issue_launch_date                               "to_date(:issue_launch_date, 'dd-mon-yyyy', 'NLS_DATE_LANGUAGE = ENGLISH')",
+issue_coupon                                    "to_number(:issue_coupon, '99999999.9999')",
+issue_tranche_series                            ,
+issue_class                                     ,
+
+
+... quite some more fields
+
+
+s_federal_tax_exempt_stat_cd                   "to_number(:us_federal_tax_exempt_stat_cd, '9')",
+market_sector_industry_id_cd                    "to_number(:market_sector_industry_id_cd, '99999999')"
+)
