@@ -62,14 +62,14 @@
 				<li><a href="#Oracle">Oracle</a></li>
 				<li><a href="#DotNet">C#</a></li>
 				<li><a href="#Delphi">Delphi</a></li>
-				<li><a href="#Delphi">Java(Script)</a></li>
+				<li><a href="#JJ">Java(Script)</a></li>
 			</ul>
 
 			<div class="tabContent" id="Oracle">
 				<h3>ELT</h3>
 				<div>
-					application/business-logic as triggers and Pl/Sql. <br> <br>ELT-Jobs were sort of
-					 everything-within-oracle version of ETL, eventually
+					application/business-logic as triggers and Pl/Sql. <br> <br>ELT-Jobs
+					were sort of everything-within-oracle version of ETL, eventually
 					feeding a master data management system, also on Oracle. <br>
 					<br>Initial extraction was done with Oracle Loader, loading <a
 						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/RatingLoaderA.dat">comma
@@ -102,10 +102,11 @@
 						loader file</a> is trivial. <br> <br>Business rule views
 					also could come in their own right, like in <a
 						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_cp_rating_eval.sql">
-						this example</a> from rating processing, where the analytical functions of Oracle handed
-					themselves nicely to implemented a given set of requirements. <br>
-					<br>Rating processing for different providers proved to be
-					uniform enough to apply the same strategy to all of them <a
+						this example</a> from rating processing, where the analytical
+					functions of Oracle handed themselves nicely to implemented a given
+					set of requirements. <br> <br>Rating processing for
+					different providers proved to be uniform enough to apply the same
+					strategy to all of them <a
 						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/RTG_UTIL%23.pkb">by
 						constructing sql at runtime </a> (uniform table names were no option).
 					Access to the master data was the bottleneck, therefore caching
@@ -118,9 +119,9 @@
 				<h3>Master data management synchronization</h3>
 				Master data management synchronization usually meant, to apply
 				sanity checks, business rules and mappings in Pl/Sql to incoming
-				data and feed the results through a Pl/Sql-api to the
-				database while considering defined
-				mutation rules. The sample is a tiny fraction of <a
+				data and feed the results through a Pl/Sql-api to the database while
+				considering defined mutation rules. The sample is a tiny fraction of
+				<a
 					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/LOAD_INSTRUMENTS%23.pkb">asset
 					synchronization</a>, a rather central task. <br> <br>Since
 				heavy use of objects was made on all levels, occasionally object
@@ -167,7 +168,7 @@
 						Linq. The final model provided by another party was closely
 						related. On that I based <a
 							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/Extractions/Extraction.cs">core
-							 production code elements</a> of the initial implementation of <a
+							production code elements</a> of the initial implementation of <a
 							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/Extractions/BondMonNormalizer.cs">
 							extractions</a>, thought it was not appropriate to mimic Sql there.
 					</p>
@@ -223,11 +224,14 @@
 					</p>
 				</div>
 			</div>
-<div class="tabContent" id="Java(Script)">
+			<div class="tabContent" id="JJ">
 				<div>
 					<p>
-						 In Vienna you have to be fast, If you don't want to give a lot of bucks to the landlord, so I needed a near real time advertisement scraper, I put it on Google Appengine, using Java/GWT/JavaScript/Dygraph charting. Here's the code on 
-						 <a href="https://github.com/curiosag/AdScraperGwt">github</a>.
+						In Vienna you have to be fast, If you don't want to give a lot of
+						bucks to the landlord, so I needed a near real time advertisement
+						scraper, I put it on Google Appengine, using
+						Java/GWT/JavaScript/Dygraph charting. Here's the code on <a
+							href="https://github.com/curiosag/AdScraperGwt">github</a>.
 					</p>
 				</div>
 			</div>
