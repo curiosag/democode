@@ -139,16 +139,17 @@
 				: technical consultant, grass-root activist, implementation, test
 			</p>
 			<h3>Rating Data Processing</h3>
-			Framework for processing of rating data. The initial project was for Clearstream Luxemburg, 
-			Standard & Poor's ratings with follow up projects for Moody's and
-			Fitch. The component became part of the standard release.<br>
-			<br></>A common, provider independent chain of processing steps,
-			fitting in provider specific operations where needed, like Oracle
-			loader files or transformation views. Common synchronization of
-			master data with pre-loaded, sanitized ratings. The design rendered the
-			follow-up projects rather economical. There was some architectural reuse possible for WSS from Deutsche Börse and IDC prices.<br>
-			<br>Initially customer projects, the implementation became part
-			of a standard product.
+			Framework for processing of rating data. The initial project was for
+			Clearstream Luxemburg, Standard & Poor's ratings with follow up
+			projects for Moody's and Fitch. The component became part of the
+			standard release.<br> <br></>A common, provider independent
+			chain of processing steps, fitting in provider specific operations
+			where needed, like Oracle loader files or transformation views.
+			Common synchronization of master data with pre-loaded, sanitized
+			ratings. The design rendered the follow-up projects rather
+			economical. There was some architectural reuse possible for WSS from
+			Deutsche Börse and IDC prices.<br> <br>Initially customer
+			projects, the implementation became part of a standard product.
 			<p>
 				<code>technology</code>
 				: Oracle 10g, Oracle loader, Sql, Pl/Sql, proprietary scripting
@@ -233,8 +234,8 @@
 				: analysis, implementation
 			</p>
 			<h3>Model based data extraction from Telekurs data</h3>
-			Proof of concept for model generation from Six Telekurs meta-data sources
-			and data extractions from the object model, covering existing
+			Proof of concept for model generation from Six Telekurs meta-data
+			sources and data extractions from the object model, covering existing
 			Sql queries on Telekurs data. The final model chosen for the product
 			was close to the prototype.
 			<p>
@@ -249,12 +250,12 @@
 			<p>
 				<br> <br>
 			<hr>
-			<a name="ref1"></a><small>1 Request pooling was an interesting
-				feature to minimize the cost of requested data. Instruments, e.g. a
-				number of ISINs, that were the same in different request, were
-				removed from them and processed separately in another one. The
-				resulting data data was merged with the resulting data of the
-				residual original requests. This strategy only works for some
+			<a name="ref1"></a><small>1 Request pooling was an
+				interesting feature to minimize the cost of requested data.
+				Instruments, e.g. a number of ISINs, that were the same in different
+				request, were removed from them and processed separately in another
+				one. The resulting data data was merged with the resulting data of
+				the residual original requests. This strategy only works for some
 				payment models, though. For others the opposite is necessary:
 				squeeze as many requests as possible into one.</small>
 			</p>
