@@ -63,7 +63,7 @@
 				<li><a href="#DotNet">C#</a></li>
 				<li><a href="#Delphi">Delphi</a></li>
 				<li><a href="#Java">Java</a></li>
-				<li><a href="#JavaScript">Java &amp; JavaScript</a></li>
+				<li><a href="#JavaScript">Java&#47;JavaScript&#47;Octave</a></li>
 			</ul>
 
 			<div class="tabContent" id="Oracle">
@@ -247,7 +247,7 @@
 					<p>
 						<code>technology</code>
 						: Java7, Antlr4, Google fusion tables api v2, RSyntaxTextArea code
-						editor and autocomlete component
+						editor and autocomlete component, bash scripting, JUnit, Maven, Eclipse Mars, Git, Meld diff
 					</p>
 					<ul>
 						<li>Article on <a
@@ -273,24 +273,33 @@
 							href="http://www.spiegel.de/auto/aktuell/online-boersen-profis-fegen-gebrauchtwagen-markt-leer-a-510009.html">
 							car market</a> already.
 					</p>
-					<p>
-						But seeing the significant amount of <a
-							href="http://www.mieterschutzwien.at/index.php/3719/wohnungsbetrug-auf-internetplattformen/">fraudulent
-							advertisements</a> and the reluctance or inability of the portals to
-						provide effective filters and procedures to prevent it, I'm about
-						to add state of the art <a href="http://cs229.stanford.edu/">
-							machine learning</a> to get rid of the scum. Hope the portals will
-						find it useful eventually. On the other hand a click on a scam ad
-						also is another click after all, isn't it?
-					</p>
-					<p>
-						I put it on Google Appengine, using Dygraph charting for some
+<p>
+						Apache Lucene indexing and query is used for stemming, tokenization, number detection, and fuzzy/word vicinity querying, allowing for queries like "Find matches for keyword 'provision' with an Levensthein edit distance <= 2 and a number token in it's vicinity, not further than 2 words away in either direction". I put it on Google Appengine, using Dygraph charting for some
 						visualization. See the stat page of a life specimen <a
 							href="http://sniffbazar.appspot.com/Statistics.html">here</a>.
 						Code is on <a href="https://github.com/curiosag/AdScraperGwt/">github</a>.
-						Machine learning <a href="https://www.google.com/fusiontables/DataSource?docid=1LU-S2JpGitGmzU6x-nepnFDPZHy5L_X8jii-ZwZ2#">training data</a> is hosted at Google Fusion Tables and integrated using Googles REST api.
+						Machine learning <a href="https://www.google.com/fusiontables/DataSource?docid=1LU-S2JpGitGmzU6x-nepnFDPZHy5L_X8jii-ZwZ2#">training data</a> is hosted at Google Fusion Tables and integrated using Googles <a href="https://developers.google.com/fusiontables/docs/v2/reference/">REST api</a>. <br><br>Initially using Scala for the scraper - esentially to get used to it - it turned out, that the Java/Scala combination gave a lot of overhead, especially considering the Google Appengine ecosystem. There also weren't really any complex data transformations or algorithms justifying the use of Scala, so I dropped it at the price of some boiler plate code and an inflation of the number of interfaces. At a later stage I used Maven for dependency resolution and packaging, which would have reduced the overhead considerably, but still I think, the task doesen't reward using 2 languages simultaneously. 
+<br><br>Also the pseudo-lambdas of Java 8 weren't of much use in this situation, even though there are approaches to convert the byte code to Java 7 compliance and make it this way edible for Appengine.
 							
 					</p>
+
+			<p>
+						<code>technology</code>
+						: Scala, Java7, Apache Lucene indexing and query, Dygraph JavaScript charting, Google fusion tables api v2, Octave/Matlab script, mainstream machine learning, JUnit, Maven, Eclipse Juno, Git, Meld diff
+					</p>
+		
+
+					<p>
+<h5>Machine Learing Excursus</h5>
+						Seeing the significant amount of <a
+							href="http://www.mieterschutzwien.at/index.php/3719/wohnungsbetrug-auf-internetplattformen/">fraudulent
+							advertisements</a>, at times up to 40% in the budget range, and the reluctance or inability of some portals to
+						provide effective filters and procedures to prevent it, I added some <a href="http://cs229.stanford.edu/">
+							machine learning</a> to get rid of it. <br><br> 
+It turned out, that valid and invalid ads aren't cleanly separable. First thinking of support vector machines or neuronal networks, eventually a simple logistic classifier with a low detection threshold (0.1) was most suitable for the task. It gives the high precision needed (>96%) in order not to filter valid ads, at the cost of a rather low recall of about 60%, which is acceptable here. <br><br>
+This way everything needed in Java was the polynomial&#47;sigmoid evaluation function which was easy to write by hand. The modelling and training part I left in Matlab&#47;Octave script language. <br><br> I should mention, that linear discriminant analysis (LDA) showed a better overall performance, but provided lower precision, which was not preferrable in this case. It gives nice visualizations though, and the intersection of good and bad ads can also be seen there, confirming the initial hypothesis, that unusually low prize per square meter ratio indicates bad ads, though not always. The projection is on price, size and the "contains email" indicator.<br> <img src="./images/3DScatterPlot.gif" alt="" halign="center">
+					</p>
+					
 				</div>
 			</div>
 
