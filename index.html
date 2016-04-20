@@ -73,42 +73,42 @@
 					were sort of everything-within-oracle version of ETL, eventually
 					feeding a master data management system, also on Oracle. <br>
 					<br>Initial extraction was done with Oracle Loader, loading <a
-						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/RatingLoaderA.dat">comma
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/RatingLoaderA.dat"  target="_blank">comma
 						separated </a> and <a
-						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/RatingLoaderB.dat">fixed
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/RatingLoaderB.dat"  target="_blank">fixed
 						length </a> formats to <a
-						href="https://github.com/curiosag/democode/tree/master/Oracle/ETL/DDL">staging
+						href="https://github.com/curiosag/democode/tree/master/Oracle/ETL/DDL"  target="_blank">staging
 						tables</a>, non-recoverable and non-logged in append mode. Wherever
 					possible type conversion was left to the loader too, as in the
 					examples shown. <br> <br>Where not, type conversion was
 					handled in <a
-						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_price_transf_eval.sql">
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_price_transf_eval.sql"  target="_blank">
 						transformation views</a>, usually simultaneously with the application
 					of business rules. The latter could be rather elaborate functions
 					like the peculiar amend date decoding in <a
-						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/PRO%23.pkb">
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/PRO%23.pkb"  target="_blank">
 						this package</a> (check_amenddt, test_amend_date), where also the
 					default insert-from-view error handling is shown (load_data). <br>
 					<br>In one case I was happy to find an occasion to apply a <a
-						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/PipelinedFunctionConvertRawRecord.sql">
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/PipelinedFunctionConvertRawRecord.sql"  target="_blank">
 						parallel pipelined function </a> (plus the related <a
-						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/TransformRawRecord%23.pkb">
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/TransformRawRecord%23.pkb"  target="_blank">
 						implementing package </a> for the decoding proper) to extract raw
 					values from a colon-separated-key-value-pairs format to feed a <a
-						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_transform_price.sql">
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_transform_price.sql"  target="_blank">
 						subsequent transformation view </a> and <a
-						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/TransformAndLoad%23.pkb">
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/TransformAndLoad%23.pkb"  target="_blank">
 						loading </a> to the final staging table. In this case the <a
-						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/TrivialLoader.dat">Oracle
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/LoaderFiles/TrivialLoader.dat"  target="_blank">Oracle
 						loader file</a> is trivial. <br> <br>Business rule views
 					also could come in their own right, like in <a
-						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_cp_rating_eval.sql">
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/v_cp_rating_eval.sql"  target="_blank">
 						this example</a> from rating processing, where the analytical
 					functions of Oracle handed themselves nicely to implement a given
 					set of requirements. <br> <br>Rating processing for
 					different providers proved to be uniform enough to apply the same
 					strategy to all of them <a
-						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/RTG_UTIL%23.pkb">by
+						href="https://github.com/curiosag/democode/blob/master/Oracle/ETL/PlSql/RTG_UTIL%23.pkb"  target="_blank">by
 						constructing sql at runtime </a> (uniform table names were no option).
 					Access to the master data was the bottleneck, therefore caching
 					(g_mdm_classnames, FUNCTION get_class_name) and one time copies of
@@ -123,17 +123,17 @@
 				data and feed the results through a Pl/Sql-api to the database while
 				considering defined mutation rules. The sample is a tiny fraction of
 				<a
-					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/LOAD_INSTRUMENTS%23.pkb">asset
+					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/LOAD_INSTRUMENTS%23.pkb"  target="_blank">asset
 					synchronization</a>, a rather central task. <br> <br>Since
 				heavy use of objects was made on all levels, occasionally object
 				representations had to be <a
-					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/deserialize_objects%23.pkb">serialized</a>.
+					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/deserialize_objects%23.pkb"  target="_blank">serialized</a>.
 				Aside custom ELT, data traveled via Xml messaging, including <a
-					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/XmlGen%23.pkb">creation
+					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/XmlGen%23.pkb"  target="_blank">creation
 					and sending</a> as well as consumption. The latter used <a
-					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/XmlDomManipulation%23.pkb">DOM-access</a>
+					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/XmlDomManipulation%23.pkb"  target="_blank">DOM-access</a>
 				and <a
-					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/XmlXQuery%23.pkb">XQuery</a>.
+					href="https://github.com/curiosag/democode/blob/master/Oracle/Integration/XmlXQuery%23.pkb"  target="_blank">XQuery</a>.
 				<div></div>
 			</div>
 
@@ -141,7 +141,7 @@
 				<div>
 					<p>
 						A study to use Linq syntax to express <a
-							href="https://github.com/curiosag/MicroWorkflow/tree/master/DataProcessingByLinq/Program.cs">data
+							href="https://github.com/curiosag/MicroWorkflow/tree/master/DataProcessingByLinq/Program.cs"  target="_blank">data
 							processing sequences</a> with the goal to create non-graphical
 						workflow definitions that can be suspended, persisted and resumed.
 						It is possible, but very limited. F# computation sequences could
@@ -150,10 +150,10 @@
 					<p>
 						A byproduct that eventually became production code was a simple
 						high level <a
-							href="https://github.com/curiosag/MicroWorkflow/blob/master/DataProcessingByLinq/Ftp/Ftp.cs">ftp
+							href="https://github.com/curiosag/MicroWorkflow/blob/master/DataProcessingByLinq/Ftp/Ftp.cs"  target="_blank">ftp
 							class</a> with specialized subclasses to provide straight forward ftp
 						functionality, implemented with .net web requests, and <a
-							href="https://github.com/curiosag/MicroWorkflow/blob/master/DataProcessingByLinq/Ftp/FileBasedFtpEmulator.cs">emulated
+							href="https://github.com/curiosag/MicroWorkflow/blob/master/DataProcessingByLinq/Ftp/FileBasedFtpEmulator.cs"  target="_blank">emulated
 							ftp</a> functionality operating on the file system. The latter was
 						used to emulate the ftp delivery logic of different data
 						providers.
@@ -161,16 +161,16 @@
 
 					<p>
 						Proof of concept and pilot application - generate an <a
-							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/TkMeta/FromXsd/Doc.cs">object
+							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/TkMeta/FromXsd/Doc.cs"  target="_blank">object
 							model</a> from meta-data definitions from Six Telekurs and show, that
 						it is possible to <a
-							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/TkMeta/SampleQuery_Baskets.cs">re-implement
+							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/TkMeta/SampleQuery_Baskets.cs"  target="_blank">re-implement
 							existing sql-queries</a> on that data-feed using the object model and
 						Linq. The final model provided by another party was closely
 						related. On that I based <a
-							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/Extractions/Extraction.cs">core
+							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/Extractions/Extraction.cs"  target="_blank">core
 							production code elements</a> of the initial implementation of <a
-							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/Extractions/BondMonNormalizer.cs">
+							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/Extractions/BondMonNormalizer.cs"  target="_blank">
 							extractions</a>, thought it was not appropriate to mimic Sql there.
 					</p>
 				</div>
@@ -184,16 +184,16 @@
 						processing and a server part, responsible for execution and
 						co-ordination of concurrent client requests. Requests came in form
 						of data processing messages (<a
-							href="https://github.com/curiosag/democode/blob/master/Delphi/ClientServerFramework/uDpMessageCommon.pas">TDpMessageCommon</a>),
+							href="https://github.com/curiosag/democode/blob/master/Delphi/ClientServerFramework/uDpMessageCommon.pas"  target="_blank">TDpMessageCommon</a>),
 						bundling sequences of commands and their execution parameters. The
 						server translates (<a
-							href="https://github.com/curiosag/democode/blob/master/Delphi/ClientServerFramework/uActionFactory_b.pas">uActionFactory_b</a>,
+							href="https://github.com/curiosag/democode/blob/master/Delphi/ClientServerFramework/uActionFactory_b.pas"  target="_blank">uActionFactory_b</a>,
 						<a
-							href="https://github.com/curiosag/democode/blob/master/Delphi/ClientServerFramework/uActionFactoryFetchExternalData.pas">uActionFactoryFetchExternalData</a>)
+							href="https://github.com/curiosag/democode/blob/master/Delphi/ClientServerFramework/uActionFactoryFetchExternalData.pas"  target="_blank">uActionFactoryFetchExternalData</a>)
 						them to actions (<a
-							href="https://github.com/curiosag/democode/blob/master/Delphi/ClientServerFramework/uAction_b.pas">uAction_b</a>,
+							href="https://github.com/curiosag/democode/blob/master/Delphi/ClientServerFramework/uAction_b.pas"  target="_blank">uAction_b</a>,
 						<a
-							href="https://github.com/curiosag/democode/blob/master/Delphi/ClientServerFramework/uDbActions.pas">uDbActions</a>)
+							href="https://github.com/curiosag/democode/blob/master/Delphi/ClientServerFramework/uDbActions.pas"  target="_blank">uDbActions</a>)
 						which eventually get executed. Client- server- and associated
 						proxy-classes are not included here.
 					</p>
@@ -201,7 +201,7 @@
 					<p>
 						Elements of a generic storage and data retrieval framework, that I
 						implemented following an abstract design (<a
-							href="https://github.com/curiosag/democode/blob/master/Delphi/DataAccessLayer/uDataAccessLayer_a.pas">uDataAccessLayer_a</a>)
+							href="https://github.com/curiosag/democode/blob/master/Delphi/DataAccessLayer/uDataAccessLayer_a.pas"  target="_blank">uDataAccessLayer_a</a>)
 						aimed at the provider structure level. Everything down to the
 						physical tables had to be spelled out. It supports native
 						simultaneous access to Oracle, Db2 (including transparent DML
@@ -209,17 +209,17 @@
 						supported. Data writing is tree oriented and handles update
 						operations transparently for using classes. It is meta-data
 						driven, meta-data is a terse pointer structure roughly like <a
-							href="https://github.com/curiosag/democode/blob/master/Delphi/DataAccessLayer/uMd.pas">this</a>
+							href="https://github.com/curiosag/democode/blob/master/Delphi/DataAccessLayer/uMd.pas"  target="_blank">this</a>
 						one. The abstract level was backed by custom classes and
 						eventually by a general table access layer (<a
-							href="https://github.com/curiosag/democode/blob/master/Delphi/DataAccessLayer/uCustomTableAccess.pas">uCustomTableAccess</a>)
+							href="https://github.com/curiosag/democode/blob/master/Delphi/DataAccessLayer/uCustomTableAccess.pas"  target="_blank">uCustomTableAccess</a>)
 						with database specific implementations, hiding the nasty details.
 						For examples of nasty details see <a
-							href="https://github.com/curiosag/democode/blob/master/Delphi/DataAccessLayer/uOraTableExt.	pas">uOraTableExt</a>,
+							href="https://github.com/curiosag/democode/blob/master/Delphi/DataAccessLayer/uOraTableExt.	pas"  target="_blank">uOraTableExt</a>,
 						<a
-							href="https://github.com/curiosag/democode/blob/master/Delphi/DataAccessLayer/uSQLFormat_DB2.pas">uSQLFormat_DB2</a>
+							href="https://github.com/curiosag/democode/blob/master/Delphi/DataAccessLayer/uSQLFormat_DB2.pas"  target="_blank">uSQLFormat_DB2</a>
 						and <a
-							href="https://github.com/curiosag/democode/blob/master/Delphi/DataAccessLayer/uDB2Writer.pas">uDB2Writer</a>.
+							href="https://github.com/curiosag/democode/blob/master/Delphi/DataAccessLayer/uDB2Writer.pas"  target="_blank">uDB2Writer</a>.
 						Database structures get generated from meta-data and can be
 						altered automatically on meta-data changes.
 					</p>
@@ -230,10 +230,10 @@
 					<h4>Goolge Fusion Tables Query Console</h4>
 
 					<p>
-						<a href="https://support.google.com/fusiontables#topic=1652595">Google
+						<a href="https://support.google.com/fusiontables#topic=1652595" target="_blank">Google
 							fusion tables</a> are handy, but there wasn't a tool to quickly hack
 						some <a
-							href="https://developers.google.com/fusiontables/docs/v2/sql-reference">fusion
+							href="https://developers.google.com/fusiontables/docs/v2/sql-reference" target="_blank">fusion
 							tables sql</a>, so I made one. From the sales folder:
 					</p>
 					<p>
@@ -251,9 +251,9 @@
 					</p>
 					<ul>
 						<li>Article on <a
-							href="http://www.codeproject.com/Tips/1074347/Instant-SQL-Queries-for-Google-Fusion-Tables">codeproject.com</a></li>
-						<li><a href="http://curiosag.github.io/ftc/">project page</a></li>
-						<li>Code on <a href="https://github.com/curiosag/ftc">Github</a></li>
+							href="http://www.codeproject.com/Tips/1074347/Instant-SQL-Queries-for-Google-Fusion-Tables" target="_blank">codeproject.com</a></li>
+						<li><a href="http://curiosag.github.io/ftc/" target="_blank">project page</a></li>
+						<li>Code on <a href="https://github.com/curiosag/ftc" target="_blank">Github</a></li>
 					</ul>
 				</div>
 			</div>
@@ -268,15 +268,15 @@
 						the mailing list. I do not want to make it available for the
 						public, though, since it gives the technically savvy yet another
 						advantage over the not so skilled, like you have it at the<a
-							href="http://www.spiegel.de/auto/aktuell/online-boersen-profis-fegen-gebrauchtwagen-markt-leer-a-510009.html">
+							href="http://www.spiegel.de/auto/aktuell/online-boersen-profis-fegen-gebrauchtwagen-markt-leer-a-510009.html" target="_blank">
 							car market</a> already.
 					</p>
 <p>
 						Apache Lucene indexing and query is used for stemming, tokenization, number detection, and fuzzy/word vicinity querying, allowing for queries like "Find matches for keyword 'provision' with an Levensthein edit distance <= 2 and a number token in it's vicinity, not further than 2 words away in either direction". I put it on Google Appengine, using Dygraph charting for some
 						visualization. See the stat page of a life specimen <a
-							href="http://sniffbazar.appspot.com/Statistics.html">here</a>.
-						Code is on <a href="https://github.com/curiosag/AdScraperGwt/">github</a>.
-						Machine learning <a href="https://www.google.com/fusiontables/DataSource?docid=1LU-S2JpGitGmzU6x-nepnFDPZHy5L_X8jii-ZwZ2#">training data</a> is hosted at Google Fusion Tables and integrated using Googles <a href="https://developers.google.com/fusiontables/docs/v2/reference/">REST api</a>. <br><br>Scala was useful for a generic <a href="https://github.com/curiosag/AdScraperExpressionFilter/blob/master/src/org/cg/adscraper/exprFilter/ExprParser.scala">expression parser/avaluater</a> component to filter advertisements for recipients according to defined rules of the kind <br><code>	400 <= prize <= 850 & size >= 50 & passes(description, foulEmailFilter)</code>. 
+							href="http://sniffbazar.appspot.com/Statistics.html" target="_blank">here</a>.
+						Code is on <a href="https://github.com/curiosag/AdScraperGwt/" target="_blank">github</a>.
+						Machine learning <a href="https://www.google.com/fusiontables/DataSource?docid=1LU-S2JpGitGmzU6x-nepnFDPZHy5L_X8jii-ZwZ2#" target="_blank">training data</a> is hosted at Google Fusion Tables and integrated using Googles <a href="https://developers.google.com/fusiontables/docs/v2/reference/" target="_blank">REST api</a>. <br><br>Scala was useful for a generic <a href="https://github.com/curiosag/AdScraperExpressionFilter/blob/master/src/org/cg/adscraper/exprFilter/ExprParser.scala" target="_blank">expression parser/avaluater</a> component to filter advertisements for recipients according to defined rules of the kind <br><code>	400 <= prize <= 850 & size >= 50 & passes(description, foulEmailFilter)</code>. 
 							
 					</p>
 
@@ -289,9 +289,9 @@
 					<p>
 <h5>Machine Learing Excursus</h5>
 						Seeing the significant amount of <a
-							href="http://www.mieterschutzwien.at/index.php/3719/wohnungsbetrug-auf-internetplattformen/">fraudulent
+							href="http://www.mieterschutzwien.at/index.php/3719/wohnungsbetrug-auf-internetplattformen/" target="_blank">fraudulent
 							advertisements</a>, at times up to 40% in the budget range, and the reluctance or inability of some portals to
-						provide effective filters and procedures to prevent it, I added some <a href="http://cs229.stanford.edu/">
+						provide effective filters and procedures to prevent it, I added some <a href="http://cs229.stanford.edu/" target="_blank">
 							machine learning</a> to get rid of it. <br><br> 
 It turned out, that valid and invalid ads aren't cleanly separable. First thinking of support vector machines or neuronal networks, eventually a simple logistic classifier with a low detection threshold (0.1) was most suitable for the task. It gives the high precision needed (>96%) in order not to filter valid ads, at the cost of a rather low recall of about 60%, which is acceptable here. <br><br>
 This way everything needed in Java was the polynomial&#47;sigmoid evaluation function which was easy to write by hand. The modelling and training part I left in Matlab&#47;Octave script language. <br><br> I should mention, that linear discriminant analysis (LDA) showed a better overall performance, but provided lower precision, which was not preferrable in this case. It gives nice visualizations though, and the intersection of good and bad ads can also be seen there, confirming the initial hypothesis, that unusually low prize per square meter ratio indicates bad ads, though not always. The projection is on price, size and the "contains email" indicator.<br> <img src="./images/3DScatterPlot.gif" alt="" halign="center">
