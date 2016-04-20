@@ -63,7 +63,7 @@
 				<li><a href="#DotNet">C#</a></li>
 				<li><a href="#Delphi">Delphi</a></li>
 				<li><a href="#Java">Java</a></li>
-				<li><a href="#JavaScript">Java&#47;JavaScript&#47;Octave</a></li>
+				<li><a href="#JavaScript">Java&#47;Scala&#47;JavaScript&#47;Octave</a></li>
 			</ul>
 
 			<div class="tabContent" id="Oracle">
@@ -278,8 +278,7 @@
 						visualization. See the stat page of a life specimen <a
 							href="http://sniffbazar.appspot.com/Statistics.html">here</a>.
 						Code is on <a href="https://github.com/curiosag/AdScraperGwt/">github</a>.
-						Machine learning <a href="https://www.google.com/fusiontables/DataSource?docid=1LU-S2JpGitGmzU6x-nepnFDPZHy5L_X8jii-ZwZ2#">training data</a> is hosted at Google Fusion Tables and integrated using Googles <a href="https://developers.google.com/fusiontables/docs/v2/reference/">REST api</a>. <br><br>Initially using Scala for the scraper - esentially to get used to it - it turned out, that the Java/Scala combination gave a lot of overhead, especially considering the Google Appengine ecosystem. There also weren't really any complex data transformations or algorithms justifying the use of Scala, so I dropped it at the price of some boiler plate code and an inflation of the number of interfaces. At a later stage I used Maven for dependency resolution and packaging, which would have reduced the overhead considerably, but still I think, the task doesen't reward using 2 languages simultaneously. 
-<br><br>Also the pseudo-lambdas of Java 8 weren't of much use in this situation, even though there are approaches to convert the byte code to Java 7 compliance and make it this way edible for Appengine.
+						Machine learning <a href="https://www.google.com/fusiontables/DataSource?docid=1LU-S2JpGitGmzU6x-nepnFDPZHy5L_X8jii-ZwZ2#">training data</a> is hosted at Google Fusion Tables and integrated using Googles <a href="https://developers.google.com/fusiontables/docs/v2/reference/">REST api</a>. <br><br>Scala was useful for a generic <a href="https://github.com/curiosag/AdScraperExpressionFilter/blob/master/src/org/cg/adscraper/exprFilter/ExprParser.scala">expression parser/avaluater</a> component to filter advertisements for recipients according to defined rules of the kind <br><code>	150 <= prize <= 400 & size > 0 & passes(description, foulEmailFilter)</code>. 
 							
 					</p>
 
