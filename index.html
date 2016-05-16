@@ -243,6 +243,14 @@
 							covering syntactic and semantic errors. Delete, rename and copy
 							tables by sql. </em>
 					</p>
+					<p>
+In quite some aspects it has characteristics of a learning project, especially as the parsing and digging-in-syntax parts are concerned, which for the major part consisted of filling-in the necessary parts 
+	<a
+							href="https://github.com/curiosag/ftc/blob/master/ftcSql/src/manipulations/CursorContextListener.java"  target="_blank">into generated Antlr-Listeners.</a> Apart from the <a	href="https://github.com/antlr/grammars-v4/tree/master/fusion-tables"  target="_blank">Antlr5-grammar</a> this isn't the most elegant task anyway, since you have to manage to scrape meaning from usually incomplete code fragments. On the more structured side are the <a
+							href="https://github.com/curiosag/ftc/blob/master/ftcShared/src/org/cg/ftc/shared/interfaces/Connector.java"  target="_blank"> connector interface</a> and its implementation for the <a	href="https://github.com/curiosag/ftc/blob/master/ftcConnector/src/main/java/fusiontables/FusionTablesConnector.java"  target="_blank">Fusion Tables Java api</a> and the MVC variation for the <a	href="https://github.com/curiosag/ftc/blob/master/ftcClientJava/src/org/cg/ftc/ftcClientJava/FtcGui.java"  target="_blank">graphic</a> and <a	href="https://github.com/curiosag/ftc/blob/master/ftcClientJava/src/org/cg/ftc/ftcClientJava/CmdLineFrontEnd.java"  target="_blank">command line</a> UI both implementing the common abstraction for the <a	href="https://github.com/curiosag/ftc/blob/master/ftcClientJava/src/org/cg/ftc/ftcClientJava/FrontEnd.java"  target="_blank">front end</a> which is then linked to the <a	href="https://github.com/curiosag/ftc/blob/master/ftcClientJava/src/org/cg/ftc/ftcClientJava/ftcClientController.java"  target="_blank">controller</a> and the related <a	href="https://github.com/curiosag/ftc/blob/master/ftcClientJava/src/org/cg/ftc/ftcClientJava/ftcClientModel.java"  target="_blank">model</a>.
+
+					</p>
+					
 
 					<p>
 						<code>technology</code>
