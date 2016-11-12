@@ -62,7 +62,7 @@
 				<li><a href="#Oracle">Oracle</a></li>
 				<li><a href="#DotNet">C#</a></li>
 				<li><a href="#Delphi">Delphi</a></li>
-				<li><a href="#Java">Java</a></li>
+				<li><a href="#Java">Java&#47;Eclipse RCP</a></li>
 				<li><a href="#JavaScript">Java&#47;Scala&#47;JavaScript&#47;Octave</a></li>
 			</ul>
 
@@ -140,6 +140,7 @@
 			<div class="tabContent" id="DotNet">
 				<div>
 					<p>
+					<h4>Workflow by Linq</h4>
 						A study to use Linq syntax to express <a
 							href="https://github.com/curiosag/MicroWorkflow/tree/master/DataProcessingByLinq/Program.cs"  target="_blank">data
 							processing sequences</a> with the goal to create non-graphical
@@ -148,6 +149,7 @@
 						be used the same way, being more expressive.
 					</p>
 					<p>
+					<h4>Generic Ftp component</h4>
 						A byproduct that eventually became production code was a simple
 						high level <a
 							href="https://github.com/curiosag/MicroWorkflow/blob/master/DataProcessingByLinq/Ftp/Ftp.cs"  target="_blank">ftp
@@ -160,6 +162,7 @@
 					</p>
 
 					<p>
+					<h4>POC Six Telekurs data processing</h4>
 						Proof of concept and pilot application - generate an <a
 							href="https://github.com/curiosag/democode/blob/master/DotNet/TkModel/TkMeta/FromXsd/Doc.cs"  target="_blank">object
 							model</a> from meta-data definitions from Six Telekurs and show, that
@@ -179,6 +182,7 @@
 			<div class="tabContent" id="Delphi">
 				<div>
 					<p>
+						<h4>Client-server data processing framework</h4>
 						Elements of a client-server data processing framework, with a
 						client part that defines, initiates and monitors sequences of data
 						processing and a server part, responsible for execution and
@@ -199,6 +203,7 @@
 					</p>
 
 					<p>
+					<h4>Model driven generic data storage and retrieval framework</h4>
 						Elements of a generic storage and data retrieval framework, that I
 						implemented following an abstract design (<a
 							href="https://github.com/curiosag/democode/blob/master/Delphi/DataAccessLayer/uDataAccessLayer_a.pas"  target="_blank">uDataAccessLayer_a</a>)
@@ -234,7 +239,7 @@
 							fusion tables</a> are handy, but there wasn't a tool to quickly hack
 						some <a
 							href="https://developers.google.com/fusiontables/docs/v2/sql-reference" target="_blank">fusion
-							tables sql</a>, so I made one. From the sales folder:
+							tables sql</a>, so I made one, now also available as <a href="http://curiosag.github.io/ftc/eclipsePlugin.html">Eclipse plugin</a>. From the sales folder:
 					</p>
 					<p>
 						<em>For a quick start with Google fusion tables sql: code
@@ -254,7 +259,7 @@ In quite some aspects it has characteristics of a learning project, especially a
 
 					<p>
 						<code>technology</code>
-						: Java7, Antlr4, Google fusion tables api v2, RSyntaxTextArea code
+						: Eclipse RCP, Java7, Antlr4, Google fusion tables api v2, RSyntaxTextArea code
 						editor and autocomlete component, bash scripting, JUnit, Maven, Eclipse Mars, Git, Meld diff
 					</p>
 					<ul>
@@ -284,7 +289,9 @@ In quite some aspects it has characteristics of a learning project, especially a
 						visualization. See the stat page of a life specimen <a
 							href="http://sniffbazar.appspot.com/Statistics.html" target="_blank">here</a>.
 						Code is on <a href="https://github.com/curiosag/AdScraperGwt/" target="_blank">github</a>.
-						Machine learning <a href="https://www.google.com/fusiontables/DataSource?docid=1LU-S2JpGitGmzU6x-nepnFDPZHy5L_X8jii-ZwZ2#" target="_blank">training data</a> is hosted at Google Fusion Tables and integrated using Googles <a href="https://developers.google.com/fusiontables/docs/v2/reference/" target="_blank">REST api</a>. <br><br>Scala was useful for a generic <a href="https://github.com/curiosag/AdScraperExpressionFilter/blob/master/src/org/cg/adscraper/exprFilter/ExprParser.scala" target="_blank">expression parser/avaluater</a> component to filter advertisements for recipients according to defined rules of the kind <br><code>	400 <= prize <= 850 & size >= 50 & passes(description, foulEmailFilter)</code>. 
+						Machine learning <a href="https://www.google.com/fusiontables/DataSource?docid=1LU-S2JpGitGmzU6x-nepnFDPZHy5L_X8jii-ZwZ2#" target="_blank">training data</a> is hosted at Google Fusion Tables and integrated using Googles <a href="https://developers.google.com/fusiontables/docs/v2/reference/" target="_blank">REST api</a>.
+						There's a <a href="https://github.com/curiosag/ftc/tree/master/ftcConnectorRest">structured interface</a> for authentication and query processing, assembled from the few fragments that could be found out there. 
+						<br><br>Scala was useful for a generic <a href="https://github.com/curiosag/expressionparser" target="_blank">expression parser/avaluater</a> component to filter advertisements for recipients according to defined rules of the kind <br><code>	400 <= prize <= 850 & size >= 50 & passes(description, foulEmailFilter)</code>. 
 							
 					</p>
 
